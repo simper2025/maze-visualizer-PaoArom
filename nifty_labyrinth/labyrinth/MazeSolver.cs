@@ -5,6 +5,8 @@ public class MazeSolver
     public List<NodeLink> ExploreMaze(MazeCell start)
     {
         List<NodeLink> visitedNodes = [];
+
+        // start.WhatsHere = Item.Star;
         ExploreNode(start, visitedNodes);
         return visitedNodes;
     }
