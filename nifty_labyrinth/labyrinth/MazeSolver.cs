@@ -1,0 +1,59 @@
+namespace labyrinth;
+
+public class MazeSolver
+{
+    public List<NodeLink> ExploreMaze(MazeCell start)
+    {
+        List<NodeLink> visitedNodes = [];
+        ExploreNode(start, visitedNodes);
+        return visitedNodes;
+    }
+
+    public void ExploreNode(MazeCell current, List<NodeLink> visited)
+    {
+        if(current == null)
+        {
+            return;
+        }
+
+        if(current.North != null)
+        {
+            var link = new NodeLink(current, "N", current.North);
+            if(!visited.Contains(link))
+            {
+                visited.Add(link);
+                ExploreNode(current.North, visited);
+            }
+        }
+
+        if(current.East != null)
+        {
+            var link = new NodeLink(current, "E", current.East);
+            if(!visited.Contains(link))
+            {
+                visited.Add(link);
+                ExploreNode(current.East, visited);
+            }
+        }
+
+        if(current.South != null)
+        {
+            var link = new NodeLink(current, "S", current.South);
+            if(!visited.Contains(link))
+            {
+                visited.Add(link);
+                ExploreNode(current.South, visited);
+            }
+        }
+
+        if(current.West != null)
+        {
+            var link = new NodeLink(current, "W", current.West);
+            if(!visited.Contains(link))
+            {
+                visited.Add(link);
+                ExploreNode(current.West, visited);
+            }
+        }
+    }
+}
